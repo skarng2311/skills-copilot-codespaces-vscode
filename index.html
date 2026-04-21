@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              slateDeep: '#070b14'
+            },
+            boxShadow: {
+              soft: '0 10px 30px rgba(15, 23, 42, 0.35)'
+            }
+          }
+        }
+      };
+    </script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-slateDeep text-slate-100 antialiased">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const skills = [
+        'JavaScript',
+        'React',
+        'Node.js',
+        'Express',
+        'MongoDB',
+        'PostgreSQL',
+        'Git',
+        'Docker'
+      ];
+
+      const projects = [
+        {
+          name: 'Project Alpha',
+          description:
+            'A full-stack web app focused on fast, reliable user workflows and clean architecture.',
+          tech: ['React', 'Node.js', 'Express', 'PostgreSQL'],
+          github: 'https://github.com/your-username/project-alpha',
+          demo: 'https://your-project-alpha-demo.example.com'
+        },
+        {
+          name: 'Project Beta',
+          description:
+            'A modern REST API and dashboard platform for managing business data with role-based access.',
+          tech: ['React', 'Node.js', 'MongoDB', 'Docker'],
+          github: 'https://github.com/your-username/project-beta',
+          demo: ''
+        },
+        {
+          name: 'Project Gamma',
+          description:
+            'A production-style developer tool that automates CI-friendly build and deployment checks.',
+          tech: ['JavaScript', 'Git', 'Docker'],
+          github: 'https://github.com/your-username/project-gamma',
+          demo: 'https://your-project-gamma-demo.example.com'
+        }
+      ];
+
+      const socialLinks = [
+        { label: 'GitHub', url: 'https://github.com/your-username' },
+        { label: 'LinkedIn', url: 'https://linkedin.com/in/your-profile' }
+      ];
+
+      const Section = ({ id, title, children }) => (
+        <section id={id} className="scroll-mt-24 py-14 md:py-20">
+          <h2 className="mb-8 text-2xl font-semibold md:text-3xl">{title}</h2>
+          {children}
+        </section>
+      );
+
+      const SkillBadge = ({ skill }) => (
+        <span className="rounded-full border border-slate-700 bg-slate-800/70 px-4 py-2 text-sm transition duration-300 hover:border-cyan-400 hover:text-cyan-300">
+          {skill}
+        </span>
+      );
+
+      const ProjectCard = ({ project }) => (
+        <article className="group rounded-xl border border-slate-800 bg-slate-900/60 p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-cyan-500/60">
+          <h3 className="text-xl font-semibold text-slate-100">{project.name}</h3>
+          <p className="mt-3 text-slate-300">{project.description}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.tech.map((item) => (
+              <span key={item} className="rounded-md bg-slate-800 px-3 py-1 text-xs text-slate-300">
+                {item}
+              </span>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-cyan-300 transition hover:text-cyan-200"
+            >
+              GitHub ↗
+            </a>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-cyan-300 transition hover:text-cyan-200"
+              >
+                Live Demo ↗
+              </a>
+            )}
+          </div>
+        </article>
+      );
+
+      const App = () => (
+        <div>
+          <header className="sticky top-0 z-20 border-b border-slate-800 bg-slateDeep/90 backdrop-blur">
+            <nav className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4 md:px-8">
+              <span className="text-sm font-semibold tracking-wide text-cyan-300">Portfolio</span>
+              <div className="flex gap-3 text-sm text-slate-300 md:gap-5">
+                {['about', 'skills', 'projects', 'experience', 'contact'].map((item) => (
+                  <a key={item} href={`#${item}`} className="capitalize transition hover:text-cyan-300">
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </nav>
+          </header>
+
+          <main className="mx-auto max-w-5xl px-5 pb-16 md:px-8">
+            <section className="py-20 md:py-28">
+              <p className="text-sm uppercase tracking-wider text-cyan-300">Hello, I’m</p>
+              <h1 className="mt-3 text-4xl font-bold leading-tight md:text-6xl">Your Name</h1>
+              <p className="mt-4 text-lg text-cyan-200 md:text-xl">Full-Stack Software Engineer</p>
+              <p className="mt-6 max-w-2xl text-slate-300">
+                I build scalable, user-focused web applications with modern JavaScript tools and clean,
+                maintainable architecture.
+              </p>
+              <a
+                href="#projects"
+                className="mt-8 inline-block rounded-lg bg-cyan-500 px-6 py-3 font-medium text-slate-950 transition duration-300 hover:bg-cyan-400"
+              >
+                View Projects
+              </a>
+            </section>
+
+            <Section id="about" title="About">
+              <p className="max-w-3xl leading-relaxed text-slate-300">
+                I’m a full-stack software engineer who enjoys building end-to-end products from API design
+                to polished frontend experiences. I focus on delivering performant, reliable, and accessible
+                solutions while collaborating closely with teams and stakeholders.
+              </p>
+            </Section>
+
+            <Section id="skills" title="Skills">
+              <div className="flex flex-wrap gap-3">
+                {skills.map((skill) => (
+                  <SkillBadge key={skill} skill={skill} />
+                ))}
+              </div>
+            </Section>
+
+            <Section id="projects" title="Projects">
+              <div className="grid gap-6 md:grid-cols-2">
+                {projects.map((project) => (
+                  <ProjectCard key={project.name} project={project} />
+                ))}
+              </div>
+            </Section>
+
+            <Section id="experience" title="Experience">
+              <div className="rounded-xl border border-dashed border-slate-700 bg-slate-900/40 p-6 text-slate-300">
+                Add internships, full-time roles, or freelance engagements here.
+              </div>
+            </Section>
+
+            <Section id="contact" title="Contact">
+              <p className="text-slate-300">
+                Email:{' '}
+                <a href="mailto:your.email@example.com" className="text-cyan-300 transition hover:text-cyan-200">
+                  your.email@example.com
+                </a>
+              </p>
+              <div className="mt-4 flex flex-wrap gap-4">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-md border border-slate-700 px-4 py-2 text-sm text-slate-200 transition duration-300 hover:border-cyan-400 hover:text-cyan-300"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </Section>
+          </main>
+        </div>
+      );
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>
