@@ -17,3 +17,4 @@ Update these values in `index.html`:
 - Name, title, and tagline in the hero section
 - Project list (name, description, tech stack, GitHub, demo links)
 - Contact email and social links
+- Replace placeholder tokens like `YOUR_USERNAME_HERE` and `YOUR_PROFILE_HERE`
