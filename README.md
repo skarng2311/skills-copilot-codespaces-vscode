@@ -18,3 +18,4 @@ Update these values in `index.html`:
 - Project list (name, description, tech stack, GitHub, demo links)
 - Contact email and social links
 - Replace placeholder tokens like `YOUR_USERNAME_HERE` and `YOUR_PROFILE_HERE`
+- Replace visible placeholders such as `Your Name` and `your.email@example.com`
